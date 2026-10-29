@@ -40,7 +40,13 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${manrope.variable} ${cormorantGaramond.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">{children}</body>
+      {/* Browser extensions may add body attributes before React hydrates. */}
+      <body
+        suppressHydrationWarning
+        className="min-h-full flex flex-col bg-background text-foreground"
+      >
+        {children}
+      </body>
     </html>
   );
 }
